@@ -9,10 +9,10 @@ allowed-tools: Read, Bash
 # Review Mode 📊
 
 Read these files:
-- `progress/sessions.jsonl`
-- `progress/vocab_log.md`
-- `prompts/correction_rules.md`
-- `prompts/research_methods.md`
+- `.cvo/progress/sessions.jsonl`
+- `.cvo/progress/vocab_log.md`
+- `.cvo/prompts/correction_rules.md`
+- `.cvo/prompts/research_methods.md`
 
 ## Flow
 
@@ -39,12 +39,12 @@ Read these files:
 
 #### 4. 누적 통계 (sessions.jsonl 기반)
 ```bash
-python scripts/log_session.py stats
+python .cvo/scripts/log_session.py stats
 ```
 - 총 세션 수, 모드별 횟수, 정확도 추이
 
 #### 5. 배운 표현 복습 퀴즈
-- `vocab_log.md`에서 최근 10개 표현
+- `.cvo/progress/vocab_log.md`에서 최근 10개 표현
 - "이 표현을 영어로 말해보세요:" 형식 퀴즈
 
 #### 6. 다음 세션 추천

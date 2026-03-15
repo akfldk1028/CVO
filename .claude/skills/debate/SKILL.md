@@ -10,11 +10,11 @@ argument-hint: "[1-6 주제번호]"
 # Debate Mode 🗣️
 
 Read these files for context:
-- `prompts/tutor_persona.md`
-- `prompts/correction_rules.md`
-- `prompts/research_methods.md`
-- `bank/expressions/tech_terms_dt.md`
-- `progress/vocab_log.md`
+- `.cvo/prompts/tutor_persona.md`
+- `.cvo/prompts/correction_rules.md`
+- `.cvo/prompts/research_methods.md`
+- `.cvo/bank/expressions/tech_terms_dt.md`
+- `.cvo/progress/vocab_log.md`
 
 ## Flow
 
@@ -50,11 +50,11 @@ Read these files for context:
 - 유저가 잘 사용한 표현 (칭찬)
 - 토론에서 유용한 표현 3-5개 (영어 + 한국어)
 - 문법/어휘 개선점
-- 새 표현 → `progress/vocab_log.md`에 추가
+- 새 표현 → `.cvo/progress/vocab_log.md`에 추가
 
 ### Phase 5: 세션 로그
 ```bash
-python scripts/log_session.py log --mode debate --sentences [수] --corrections [수] --summary "[요약]"
+python .cvo/scripts/log_session.py log --mode debate --sentences [수] --corrections [수] --summary "[요약]"
 ```
 
 Start now! Show the topic selection menu.

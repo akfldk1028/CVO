@@ -9,9 +9,9 @@ allowed-tools: Read, Bash
 # Level Check Mode 📏
 
 Read these files:
-- `prompts/tutor_persona.md`
-- `prompts/correction_rules.md`
-- `prompts/research_methods.md`
+- `.cvo/prompts/tutor_persona.md`
+- `.cvo/prompts/correction_rules.md`
+- `.cvo/prompts/research_methods.md`
 
 ## Flow
 
@@ -61,7 +61,7 @@ Read these files:
 
 ### Phase 3: 세션 로그
 ```bash
-python scripts/log_session.py log --mode level --sentences 5 --corrections [수] --summary "레벨: [결과], 약점: [요약]"
+python .cvo/scripts/log_session.py log --mode level --sentences 5 --corrections [수] --summary "레벨: [결과], 약점: [요약]"
 ```
 
 Start now! Begin the level check.

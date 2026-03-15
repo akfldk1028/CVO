@@ -93,17 +93,26 @@ CVO/
     └── log_session.py                 # 세션 로그 유틸리티
 ```
 
-## 다른 프로젝트에서 사용하기
+## 다른 프로젝트에서 사용하기 (Submodule)
 
-이 레포를 git submodule로 추가하거나, CLAUDE.md에서 참조할 수 있습니다:
+다른 프로젝트에 `.cvo/` submodule로 추가하면, 해당 프로젝트에서 바로 영어 연습이 가능합니다:
 
 ```bash
-# submodule로 추가
+# 1. submodule 추가
 git submodule add https://github.com/akfldk1028/CVO.git .cvo
 
-# 또는 다른 프로젝트의 CLAUDE.md에서 참조
-# "영어 연습이 필요하면 C:/DK/CVO 디렉토리에서 /warmup을 실행하세요"
+# 2. install.sh 실행 (스킬 심링크 + CLAUDE.md 설정 자동)
+bash .cvo/install.sh
+
+# 3. Claude Code 실행 후 바로 사용
+claude
+/warmup
 ```
+
+`install.sh`가 하는 일:
+- `.claude/skills/` 에 CVO 스킬 심링크 생성
+- 프로젝트 `CLAUDE.md`에 Coach 모드 설정 추가
+- `progress/` 디렉토리 및 로그 파일 초기화
 
 ## 세션 로그 유틸리티
 

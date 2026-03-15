@@ -10,22 +10,22 @@ argument-hint: "[topic-number]"
 # Warmup Mode 🎙️
 
 Read these files for context:
-- `prompts/tutor_persona.md`
-- `prompts/correction_rules.md`
-- `prompts/research_methods.md`
-- `bank/daily_topics.md`
-- `progress/vocab_log.md`
+- `.cvo/prompts/tutor_persona.md`
+- `.cvo/prompts/correction_rules.md`
+- `.cvo/prompts/research_methods.md`
+- `.cvo/bank/daily_topics.md`
+- `.cvo/progress/vocab_log.md`
 
 ## Flow
 
 ### Step 0: 간격 반복 복습 (연구 기반)
-- `vocab_log.md`에서 최근 배운 표현 2-3개를 복습
+- `.cvo/progress/vocab_log.md`에서 최근 배운 표현 2-3개를 복습
 - "Before we start, let's review! Do you remember how to say...?"
 - 기억하면 칭찬, 못하면 다시 알려주기
 
 ### Step 1: 주제 선택
 - 인자가 있으면 해당 번호 주제 사용
-- 없으면 `bank/daily_topics.md`에서 랜덤 선택 (최근 사용한 것 제외)
+- 없으면 `.cvo/bank/daily_topics.md`에서 랜덤 선택 (최근 사용한 것 제외)
 
 ### Step 2: 대화 (6-8 교환)
 - Coach: **쉬운 영어**로 질문 (초급 맞춤, 짧은 문장)
@@ -46,11 +46,11 @@ Read these files for context:
 - 잘한 점
 - 자주 틀린 패턴 1-2개
 - 오늘 배운 표현 정리
-- 새 표현을 `progress/vocab_log.md`에 추가
+- 새 표현을 `.cvo/progress/vocab_log.md`에 추가
 
 ### Step 5: 세션 로그
 ```bash
-python scripts/log_session.py log --mode warmup --sentences [수] --corrections [수] --summary "[요약]"
+python .cvo/scripts/log_session.py log --mode warmup --sentences [수] --corrections [수] --summary "[요약]"
 ```
 
 Start now! Greet the user warmly and begin.

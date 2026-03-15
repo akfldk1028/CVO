@@ -9,17 +9,17 @@ allowed-tools: Read, Bash
 # Shadow Mode 🔁
 
 Read these files for context:
-- `prompts/tutor_persona.md`
-- `prompts/correction_rules.md`
-- `prompts/research_methods.md`
-- `bank/expressions/interview_must.md`
-- `bank/expressions/tech_terms_dt.md`
-- `progress/vocab_log.md`
+- `.cvo/prompts/tutor_persona.md`
+- `.cvo/prompts/correction_rules.md`
+- `.cvo/prompts/research_methods.md`
+- `.cvo/bank/expressions/interview_must.md`
+- `.cvo/bank/expressions/tech_terms_dt.md`
+- `.cvo/progress/vocab_log.md`
 
 ## Flow
 
 ### Step 0: 간격 반복
-- `vocab_log.md`에서 이전에 배운 표현 2-3개를 섀도잉 문장에 포함
+- `.cvo/progress/vocab_log.md`에서 이전에 배운 표현 2-3개를 섀도잉 문장에 포함
 
 ### Step 1: 문장 제시 (8-10개)
 ```
@@ -51,11 +51,11 @@ Level 1에서 시작, 3개 연속 맞으면 레벨 업
 - 정확도 (X/10)
 - 자주 틀린 패턴
 - 다음에 집중할 부분
-- 새 표현 → `progress/vocab_log.md`에 추가
+- 새 표현 → `.cvo/progress/vocab_log.md`에 추가
 
 ### Step 6: 세션 로그
 ```bash
-python scripts/log_session.py log --mode shadow --sentences [수] --corrections [수] --summary "[요약]"
+python .cvo/scripts/log_session.py log --mode shadow --sentences [수] --corrections [수] --summary "[요약]"
 ```
 
 Start now! Present your first sentence.

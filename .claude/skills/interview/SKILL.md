@@ -10,16 +10,16 @@ argument-hint: "[1-5 카테고리번호]"
 # Interview Mode 💼
 
 Read these files for context:
-- `prompts/tutor_persona.md`
-- `prompts/correction_rules.md`
-- `prompts/research_methods.md`
-- `bank/interview/self_intro.md`
-- `bank/interview/behavioral.md`
-- `bank/interview/technical_dt.md`
-- `bank/interview/situational.md`
-- `bank/expressions/interview_must.md`
-- `bank/expressions/tech_terms_dt.md`
-- `progress/vocab_log.md`
+- `.cvo/prompts/tutor_persona.md`
+- `.cvo/prompts/correction_rules.md`
+- `.cvo/prompts/research_methods.md`
+- `.cvo/bank/interview/self_intro.md`
+- `.cvo/bank/interview/behavioral.md`
+- `.cvo/bank/interview/technical_dt.md`
+- `.cvo/bank/interview/situational.md`
+- `.cvo/bank/expressions/interview_must.md`
+- `.cvo/bank/expressions/tech_terms_dt.md`
+- `.cvo/progress/vocab_log.md`
 
 ## Flow
 
@@ -65,11 +65,11 @@ Read these files for context:
 - 개선 필요 답변 TOP 1 + 개선 방향
 - 자주 쓰면 좋을 표현 3개
 - 면접 통과 가능성 (솔직하게)
-- 새 표현 → `progress/vocab_log.md`에 추가
+- 새 표현 → `.cvo/progress/vocab_log.md`에 추가
 
 ### Phase 4: 세션 로그
 ```bash
-python scripts/log_session.py log --mode interview --sentences [수] --corrections [수] --summary "[요약]"
+python .cvo/scripts/log_session.py log --mode interview --sentences [수] --corrections [수] --summary "[요약]"
 ```
 
 Start now! Show the category selection menu.

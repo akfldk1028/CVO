@@ -17,3 +17,7 @@ logs/
 
 # Claude local settings
 .claude/settings.local.json
+.claude/todos.json
+
+# CVO progress (personal session data)
+progress/sessions.jsonl
