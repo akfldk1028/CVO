@@ -106,6 +106,75 @@ if [ -f "$PROJECT_DIR/.gitignore" ]; then
     fi
 fi
 
+# 5. TTS Plugin 설치 (claude-code-tts)
+echo ""
+echo "🔊 Setting up TTS plugin..."
+
+TTS_SRC="$CVO_DIR/plugins/claude-code-tts"
+TTS_DEST="$HOME/.claude/plugins/claude-code-tts"
+
+if [ -d "$TTS_SRC" ]; then
+    # Copy source to ~/.claude/plugins/
+    mkdir -p "$HOME/.claude/plugins"
+    if [ -d "$TTS_DEST" ]; then
+        echo "   ⏭️  TTS plugin already exists at $TTS_DEST"
+    else
+        cp -r "$TTS_SRC" "$TTS_DEST"
+        echo "   ✅ TTS source copied to $TTS_DEST"
+    fi
+
+    # Build binaries (requires Go 1.23+)
+    if command -v go &>/dev/null; then
+        echo "   🔨 Building TTS binaries..."
+        mkdir -p "$TTS_DEST/bin"
+        (cd "$TTS_DEST" && go build -ldflags="-s -w" -o bin/tts-server.exe ./cmd/tts-server 2>/dev/null && \
+         go build -ldflags="-s -w" -o bin/speak-text.exe ./cmd/speak-text 2>/dev/null)
+        if [ $? -eq 0 ]; then
+            echo "   ✅ TTS binaries built"
+        else
+            # Try with explicit Go path (Windows)
+            export PATH="/c/Program Files/Go/bin:$PATH"
+            (cd "$TTS_DEST" && go build -ldflags="-s -w" -o bin/tts-server.exe ./cmd/tts-server && \
+             go build -ldflags="-s -w" -o bin/speak-text.exe ./cmd/speak-text)
+            [ $? -eq 0 ] && echo "   ✅ TTS binaries built" || echo "   ⚠️  Build failed. Install Go 1.23+ and rebuild manually."
+        fi
+    else
+        echo "   ⚠️  Go not found. Install Go 1.23+ then run:"
+        echo "      cd $TTS_DEST && go build -ldflags=\"-s -w\" -o bin/tts-server.exe ./cmd/tts-server"
+        echo "      cd $TTS_DEST && go build -ldflags=\"-s -w\" -o bin/speak-text.exe ./cmd/speak-text"
+    fi
+
+    # Register MCP server (user scope)
+    if command -v claude &>/dev/null; then
+        claude mcp add --scope user tts -- "$TTS_DEST/bin/tts-server.exe" 2>/dev/null
+        echo "   ✅ TTS MCP server registered (user scope)"
+    else
+        echo "   ⚠️  claude CLI not found. Register manually:"
+        echo "      claude mcp add --scope user tts -- $TTS_DEST/bin/tts-server.exe"
+    fi
+
+    # Setup Stop Hook for auto-speak
+    SETTINGS_FILE="$HOME/.claude/settings.json"
+    if [ -f "$SETTINGS_FILE" ] && grep -q "auto-speak" "$SETTINGS_FILE"; then
+        echo "   ⏭️  Stop Hook already configured"
+    else
+        echo "   ⚠️  Add Stop Hook manually to $SETTINGS_FILE:"
+        echo '      "hooks": { "Stop": [{ "hooks": [{ "type": "command", "command": "bash \"$HOME/.claude/plugins/claude-code-tts/hooks/auto-speak.sh\"", "timeout": 30 }] }] }'
+    fi
+
+    # Check OPENAI_API_KEY
+    if [ -z "$OPENAI_API_KEY" ]; then
+        echo ""
+        echo "   ⚠️  OPENAI_API_KEY not set. TTS requires it."
+        echo "      export OPENAI_API_KEY=\"sk-...\""
+        echo "      Also add to ~/.claude.json mcpServers.tts.env"
+    else
+        echo "   ✅ OPENAI_API_KEY detected"
+    fi
+else
+    echo "   ⏭️  TTS plugin source not found, skipping"
+fi
+
 echo ""
 echo "✅ CVO installation complete!"
 echo ""
