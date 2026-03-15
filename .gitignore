@@ -1,0 +1,19 @@
+# IDE
+.idea/
+*.iml
+.vscode/
+
+# Python
+__pycache__/
+*.pyc
+.env
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Logs (session data is personal)
+logs/
+
+# Claude local settings
+.claude/settings.local.json
