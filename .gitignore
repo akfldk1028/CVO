@@ -21,3 +21,6 @@ logs/
 
 # CVO progress (personal session data)
 progress/sessions.jsonl
+
+# Self-referencing junction for standalone mode
+.cvo
