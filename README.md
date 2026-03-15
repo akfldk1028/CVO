@@ -7,7 +7,7 @@ Claude Code의 `/voice` 기능을 활용한 영어 스피킹 연습 환경.
 
 ```bash
 # 1. 이 레포를 클론
-git clone https://github.com/your-username/CVO.git
+git clone https://github.com/akfldk1028/CVO.git
 cd CVO
 
 # 2. Claude Code 실행
@@ -99,7 +99,7 @@ CVO/
 
 ```bash
 # submodule로 추가
-git submodule add https://github.com/your-username/CVO.git .cvo
+git submodule add https://github.com/akfldk1028/CVO.git .cvo
 
 # 또는 다른 프로젝트의 CLAUDE.md에서 참조
 # "영어 연습이 필요하면 C:/DK/CVO 디렉토리에서 /warmup을 실행하세요"
